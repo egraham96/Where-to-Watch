@@ -1,0 +1,20 @@
+{
+  "name": "group-project-2",
+  "version": "1.0.0",
+  "description": "Movie Watchlist Streaming Options",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/egraham96/group-project-2.git"
+  },
+  "author": "Emma Steph Ray",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/egraham96/group-project-2/issues"
+  },
+  "homepage": "https://github.com/egraham96/group-project-2#readme"
+}
