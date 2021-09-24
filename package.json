@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/egraham96/group-project-2/issues"
   },
-  "homepage": "https://github.com/egraham96/group-project-2#readme"
+  "homepage": "https://github.com/egraham96/group-project-2#readme",
+  "dependencies": {
+    "sequelize": "^6.6.5"
+  }
 }
