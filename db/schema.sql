@@ -1,0 +1,5 @@
+-- DROP DATABASE
+DROP DATABASE IF EXISTS movie_stream_db;
+
+-- CREATE DATABASE
+CREATE DATABASE movie_stream_db;
