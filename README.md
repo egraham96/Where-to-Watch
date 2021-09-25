@@ -1,3 +1,33 @@
+## Setup 
+
+### To Start 
+
+```
+npm install
+```
+
+### Set up the db
+
+To set up the db schema
+```
+cd db
+mysql
+source schema.sql
+quit
+```
+
+### Seed the db (optional)
+To seed the db 
+```
+npm run seed
+```
+
+### To start the server 
+```
+npm start
+```
+
+
 ## User Story
 
 ```md
