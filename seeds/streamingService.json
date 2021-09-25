@@ -1,0 +1,22 @@
+[
+  {
+    "name":"Netflix",
+    "icon": "https://cdn.cdnlogo.com/logos/n/75/netflix.svg"
+  },
+  {
+    "name":"HOBMax",
+    "icon":"https://cdn.cdnlogo.com/logos/h/95/hbo-max.svg"
+  }, 
+  {
+    "name":"Disney+",
+    "icon":"https://cdn.cdnlogo.com/logos/d/58/disney.svg"
+  },
+  {
+    "name":"Amazon",
+    "icon":"https://cdn.cdnlogo.com/logos/a/54/amazon-prime-video.svg"
+  },
+  {
+    "name":"hulu",
+    "icon":"https://cdn.cdnlogo.com/logos/h/12/hulu.svg"
+  }
+]

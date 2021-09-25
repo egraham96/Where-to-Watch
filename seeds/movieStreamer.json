@@ -1,0 +1,14 @@
+[
+  {
+    "movie_id":2,
+    "streamer_id":1
+  },
+  {
+    "movie_id":3,
+    "streamer_id":2
+  },
+  {
+    "movie_id":4,
+    "streamer_id":3
+  }
+]
