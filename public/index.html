@@ -13,10 +13,15 @@
         <!--Logo-->
         <div class="navbar-brand">
             <a class="navbar-item">
-                <img src="../Assets/logo.png" alt="Site Logo" style="max-height: 70px" class="py-3 px-2">
+                <img src="../Assets/Logo.png" alt="Site Logo" style="max-height: 70px" class="py-3 px-2">
+            </a>
+            <a class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
             </a>
         </div>
-
+            <!--Navbar Items-->
             <div class="navbar-menu">
                 <div class="navbar-end">
                     <a class="navbar-item">Search</a>
@@ -30,18 +35,44 @@
               WhereToMovie
             </div>
             
+            <!--SignIn/SignUp Buttons-->
             <div class="columns is-centered">
                 <div class="my-2 mx-6">
-                    <button class="my-2 px-4">Sign In</button>
+                    <button class="my-2 px-4" id="signin">Sign In</button>
                 </div>
                 
                 <div class="my-2 mx-6">
-                    <button class="my-2 px-4">Sign Up</button>
+                    <button class="my-2 px-4" id="signup">Sign Up</button>
                 </div>
             </div>
 
     <!--Popular Movies-->
     <div class="my-4">(PopularMoviesAPI)</div>
 
+    <!--Sign In Modal-->
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content has-background-white py-5 px-5">
+            <h3 class="title mb-6">Sign In</h3>
+            <form>
+                <div class="field">
+                    <label class="label">Username</label>
+                    <div class="control">
+                        <input type="text" class="input" placeholder="Username">
+                    </div>
+                    <div class="field">
+                        <label class="label pt-2">Password</label>
+                        <div class="control">
+                            <input type="text" class="input" placeholder="Password">
+                        </div>
+                </div>
+                <div class="mt-6 has-text-centered">
+                    <button class="button is-primary">Sign In!</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/signinmodal.js"></script>
 </body>
 </html>
