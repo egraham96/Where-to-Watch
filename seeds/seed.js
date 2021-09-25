@@ -1,19 +1,40 @@
 const sequelize = require('../config/connection');
-const { User, Movie, StreamingService } = require('../models');
+const { User, Movie, StreamingService, MovieList, MovieStreamer } = require('../models');
 
 const userData = require('./user.json');
-//const postData = require('./movie.json');
-//const commentData = require('./commentData.json');
+const movieData = require('./movie.json');
+const serviceData = require('./streamingService.json');
+const movieStreamerData = require('./movieStreamer.json');
+const movieListData = require('./movieList.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
+  //seed the user table
   const users = await User.bulkCreate(userData, {
     individualHooks: true,
     returning: true,
   });
-
-  
+  //seed the movie table
+  const movies = await Movie.bulkCreate(movieData, {
+    individualHooks: true, 
+    returning: true,
+  });
+  //seed the streaming services table
+  const services = await StreamingService.bulkCreate(serviceData, {
+    individualHooks: true,
+    returning: true,
+  });
+  //seed the movie list table to assingn movies to users
+  const movieLists = await MovieList.bulkCreate(movieListData, {
+    individualHooks: true,
+    returning: true,
+  });
+  //seed the moviestreamer table to assign movies to streaming svc
+  const streamList = await MovieStreamer.bulkCreate(movieStreamerData, {
+    individualHooks: true,
+    returning: true,
+  });
   process.exit(0);
 };
 
