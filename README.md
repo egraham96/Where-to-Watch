@@ -6,6 +6,9 @@
 npm install
 ```
 
+### configure your db connection
+1. copy the contents of .env.EXAMPLE into a new file .env
+2. fill in the user name and password for your db
 ### Set up the db
 
 To set up the db schema
