@@ -30,7 +30,7 @@ const modalSignInButtonHandler = async (event) => {
 
         if (response.ok) {
             // If successful, redirect the browser to the user's page
-            document.location.replace('/user.html');
+            document.location.replace('/api/mylist');
         } else {
             //display error if response is not ok
             alert('Failed to log in.');
