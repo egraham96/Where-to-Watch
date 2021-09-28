@@ -23,20 +23,19 @@ const modalSignInButtonHandler = async (event) => {
     if (email && password) {
         // Send a POST request to the API endpoint
         const response = await fetch('/api/users/login', {
-          method: 'POST',
-          body: JSON.stringify({ email, password }),
-          headers: { 'Content-Type': 'application/json' },
+            method: 'POST',
+            body: JSON.stringify({ email, password }),
+            headers: { 'Content-Type': 'application/json' },
         });
-    
-        if (response.ok) {
-          // If successful, redirect the browser to the profile page
-          document.location.replace('/');
-        } else {
-          alert(response.statusText);
-          console.log(response);
-        }
-      }
 
-  };
+        if (response.ok) {
+            // If successful, redirect the browser to the user's page
+            document.location.replace('/user.html');
+        } else {
+            //display error if response is not ok
+            alert('Failed to log in.');
+        }
+    };
+}
 
 modalSignInButton.addEventListener('click', modalSignInButtonHandler);
