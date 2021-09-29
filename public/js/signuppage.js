@@ -8,15 +8,25 @@ const signUpButton = document.getElementById('sign-up');
 
 const signUpButtonHandler = async (event) => {
     event.preventDefault();
-    //document.location.replace('/signup.html');
-    const email = emailField.value.trim();
-    const username = userNameField.value.trim();
-    const password = passwordField.value.trim();
+    const user_email = emailField.value.trim();
+    const user_name = userNameField.value.trim();
+    const user_password = passwordField.value.trim();
 
-    if (email && username && password) {
-      alert (`${email} ${username} ${password}`)
+    //if all the data is entered, call the post to create a new user
+    if (user_email && user_name && user_password) {
+      const response = await fetch('/api/users', {
+        method: 'POST', 
+        body: JSON.stringify({ user_name, user_email, user_password}), 
+        headers: {'Content-Type': 'application/json'}
+      });
+      if (response.ok) {
+        document.location.replace('/api/mylist')
+      } else {
+        alert(`response not oke ${response.statusText}`)
+      }
     } else {
-      alert ('enter the data');
+      //show a prompt to enter all data
+      alert ('Invalid Username, email, or password');
     }
 }
 
