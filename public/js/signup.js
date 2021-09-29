@@ -1,9 +1,5 @@
-//const signinButton = document.querySelector('#signin');
-//const modalBg = document.querySelector('.modal-background');
-//const modal = document.querySelector('.modal');
+//home page signup button and handler
 const homeSignUpButton = document.getElementById('signup');
-
-
 
 const homeSignUpButtonHandler = async (event) => {
     event.preventDefault();
@@ -11,3 +7,5 @@ const homeSignUpButtonHandler = async (event) => {
 }
 
 homeSignUpButton.addEventListener('click', homeSignUpButtonHandler);
+
+
