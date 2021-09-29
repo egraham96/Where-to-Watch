@@ -10,8 +10,8 @@ signinButton.addEventListener('click', () => {
 });
 
 modalBg.addEventListener('click', () => {
-    alert('modalBg is clicked!')
-    //modal.classList.remove('is-active');
+    //alert('modalBg is clicked!')
+    modal.classList.remove('is-active');
 });
 
 const modalSignInButtonHandler = async (event) => {
