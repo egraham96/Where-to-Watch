@@ -10,6 +10,7 @@ const renterror = document.getElementById("renterror");
 const buyoptions = document.getElementById("buyoptions");
 const buyheading = document.getElementById("buyheading");
 const buyerror = document.getElementById("buyerror");
+const addtomovies = document.getElementById("addtomovies");
 
 
 //Takes Movie Title submitted by user and returns Watchmode Api numerical ID for submitted movie
@@ -35,11 +36,14 @@ function getId(query, type) {
                 getStreaminginfo(id)
                 /*If Watchmode does not have the movie title (and thus its ID) in its database, that means it does not have any streaming options. This throws an error telling user to pick a different movie*/
                 /*You can test this by inputting a movie that does not exist*/
+                errormessage.textContent = "";
+                addtolist.textContent = "Add to Movies";
             } else throw Error('No movie found by that name');
         })
         .catch((err) => {
             console.error(err);
             errormessage.textContent = "No movie found by that name. Please try searching for a different movie. Unfortunately, TV shows are not accepted at this time."
+            addtolist.textContent = "";
 
         });
 }
@@ -85,7 +89,7 @@ function rendersubdata(data) {
             list.appendChild(link);
             suboptions.appendChild(list);
         });
-        subheading.textContent = "Subscription Streaming Links Available:"
+        subheading.textContent = ""
     } else {
         suberror.textContent = "No Subscription Services Links Available"
     }
@@ -107,7 +111,7 @@ function renderrentdata(data) {
             list2.appendChild(link2);
             rentoptions.appendChild(list2);
         });
-        rentheading.textContent = "Rental Streaming Links Available:"
+        rentheading.textContent = ""
     } else {
         renterror.textContent = "No Rental Streaming Links Available"
     }
@@ -129,7 +133,7 @@ function renderbuydata(data) {
             list3.appendChild(link3);
             buyoptions.appendChild(list3);
         });
-        buyheading.textContent = "Streaming Available with Purchase of Movie:"
+        buyheading.textContent = ""
     } else {
         buyerror.textContent = "No Movie Purchase Options Available"
     }
