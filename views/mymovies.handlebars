@@ -1,13 +1,11 @@
 {{#each movies as |movie|}}
-<div class="row mb-4 movie">
-  <div class="col-md-5">
-    <h2>
-         
-      <a href="/movie/{{movie.title}}">{{movie.title}}</a>
-    </h2>
-    
-      
-  </div>
-
-</div>
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <p class="title">{{movie.title}}</p>
+            <a>
+              <figure class="image is-4by3">
+                <img src="../Assets/JPpic.jpeg">
+            </a>
+          </article>
+        </div>
 {{/each}}
