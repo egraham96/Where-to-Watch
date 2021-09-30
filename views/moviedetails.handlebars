@@ -7,12 +7,15 @@
         {{movie.title}}: 
     </div>
 
-      <div class="tile is-ancestor">
-{{#each subscriptions as |subscription|}}
-        <div class="tile is-parent">
-          <article class="tile is-child box">
-            <p class="title">{{subscription.name}}</p>
-          </article>
-        </div>
-{{/each}}
-</div>
+      <div class="tile is-ancestor"></div>
+        {{#each subscriptions as |subscription|}}
+          
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <a href="{{subscription.name}}">{{subscription.name}}</p>
+              </article>
+            </div>
+         
+        {{/each}}
+      </div>
+

@@ -11,7 +11,7 @@ router.get('/:id', async (req, res) => {
     const subscriptions = await subscriptionData.map((sub) => sub.get({ plain: true }));
 
     console.log("subscriptions");
-    console.log(subscriptions[0].name);
+    console.log(subscriptions[0]);
     res.render('moviedetails', { 
       logged_in: req.session.logged_in,
       movie: movie, 
@@ -67,11 +67,19 @@ router.post('/', withAuth, async (req, res) => {
     //sanitize movie data
     const movie = movieData.get({ plain: true});
     //add subscritpion links
-    if(req.body.subServiceList != 0) {
-      console.log('subscription services found')
-    } else {
-      console.log('no subscritpion services found... skipping');
-    }
+    req.body.subServiceList.forEach(async (subscriptionLink) => {
+      console.log(subscriptionLink)
+      const subLinkData = await StreamingService.create({
+        name: subscriptionLink
+      });
+      const streamerData = await MovieStreamer.create({
+        movie_id: movieData.id,
+        streamingservice_id: subLinkData.id,
+      });
+
+
+    });
+
     //add to movie list
     const movieListData = await MovieList.create({
       movie_id: movie.id, 

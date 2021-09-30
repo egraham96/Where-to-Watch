@@ -14,11 +14,11 @@ const addtomovies = document.getElementById("addtomovies");
 
 const addToMoviesHandler = async (event) => {
     event.preventDefault();
-    alert('need to impleent this '+movieinput);
+    
         let title = movieinput;
         const response = await fetch('/api/mylist', {
           method: 'POST', 
-          body: JSON.stringify({ title }), 
+          body: JSON.stringify({ title , subServiceList }), 
           headers: {'Content-Type': 'application/json'}
         });
         if (response.ok) {
@@ -93,11 +93,13 @@ function getStreaminginfo(id) {
         });
 }
 
+let subServiceList = [];
 function rendersubdata(data) {
     var subscriptionoptions = data
         .filter(movie => {
             if (movie.region == "US" && movie.type == "sub" && movie.web_url != undefined) { return true; }
         })
+    console.log('subscription array')
     console.log(subscriptionoptions);
     /*Checks to make sure the Watchmode API has any SUBSCRIPTION streaming options available for the chosen movie in its database*/
     /*For example, Watchmode has the movie SpiceGirls in its database, has an ID for it, you can buy or rent movie, but no subscription streaming links available*/
@@ -108,7 +110,9 @@ function rendersubdata(data) {
             link.textContent = value.web_url
             list.appendChild(link);
             suboptions.appendChild(list);
+            subServiceList.push(value.web_url);
         });
+        console.log(subServiceList);
         subheading.textContent = ""
     } else {
         suberror.textContent = "No Subscription Services Links Available"
