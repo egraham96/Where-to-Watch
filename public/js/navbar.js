@@ -10,7 +10,7 @@ const navbarHander = async (event) => {
     if (event.target.id == homeNavbar.id) {
       document.location.replace('/api/mylist');
     } else if (event.target.id == searchNavbar.id) {
-      document.location.replace('/api/mylist/search')
+      document.location.replace('/search')
     } else {
       document.location.replace('/api/mylist');
     }

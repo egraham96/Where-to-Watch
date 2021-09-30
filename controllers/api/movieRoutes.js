@@ -49,11 +49,7 @@ router.get('/', withAuth, async (req, res) => {
 
 });
 
-router.get('/search', async (req, res) => {
-  res.render('search',{
-    logged_in: req.session.logged_in,
-    });
-});
+
 
 router.post('/', withAuth, async (req, res) => {
   //add to movies
@@ -70,7 +66,13 @@ router.post('/', withAuth, async (req, res) => {
 
     //sanitize movie data
     const movie = movieData.get({ plain: true});
-
+    //add subscritpion links
+    if(req.body.subServiceList != 0) {
+      console.log('subscription services found')
+    } else {
+      console.log('no subscritpion services found... skipping');
+    }
+    //add to movie list
     const movieListData = await MovieList.create({
       movie_id: movie.id, 
       user_id: req.session.user_id
@@ -84,7 +86,7 @@ router.post('/', withAuth, async (req, res) => {
   } catch (err) {
     res.status(400).json(err)
   }
-  //add to movie list
+  
   res.render('mymovies',{
     logged_in: req.session.logged_in,
     });
