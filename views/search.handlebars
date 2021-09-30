@@ -1,0 +1,24 @@
+<div class="section">
+        <div class="mb-4 has-text-weight-bold is-size-4">Search for a movie:</div>
+    <!--Search-->
+
+      <form id="form">
+        <input id="movieinput" type="text" autofocus="true" placeholder="Jurassic Park" class="input" style="width: 50%" />
+        <button id="submitbutton" type="submit" class="button">Search</button>
+      </form>
+    {{#if logged_in}}
+      <a id="addtolist" class="my-3"></a>
+    {{/if}}
+    <div id="errormessage" class="my-5"></div>
+
+    <!--Results-->
+    <div class="mb-4 has-text-weight-bold is-size-4">Subscription Streaming:</div>
+    <div id="suboptions"><h4 id="subheading"></h4><h4 id="suberror"></h4></div>
+
+    <div class="my-4 has-text-weight-bold is-size-4">Rental Streaming:</div>
+    <div id="rentoptions"><h4 id="rentheading"></h4><h4 id="renterror"></h4></div>
+
+    <div class="my-4 has-text-weight-bold is-size-4">Purchase Streaming:</div>
+    <div id="buyoptions"><h4 id="buyheading"></h4><h4 id="buyerror"></h4></div>
+
+<script src="/js/search.js"></script>

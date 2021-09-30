@@ -17,6 +17,10 @@ const MovieStreamer = require ('./MovieStreamer');
 Movie.belongsToMany(User, { through: MovieList});
 User.belongsToMany(Movie, {through:MovieList});
 
+Movie.belongsToMany(StreamingService, {through: MovieStreamer});
+//StreamingService.belongsToMany(Movie, {through: MovieStreamer});
+
+
 // MovieList.hasMany(Movie);
 // // Movie.belongsTo(MovieList, {
 // //   foreignKey: 'movie_id',
