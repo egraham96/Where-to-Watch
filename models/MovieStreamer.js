@@ -18,7 +18,7 @@ MovieStreamer.init(
         key: 'id',
       },
     },
-    streamer_id: {
+    streamingservice_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'streamingservice',

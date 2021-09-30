@@ -1,6 +1,23 @@
 const router = require('express').Router();
-const { User, Movie, MovieList } = require('../../models');
+const { User, Movie, MovieList, MovieStreamer, StreamingService } = require('../../models');
 const withAuth = require('../../utils/auth')
+
+router.get('/:id', async (req, res) => {
+  console.log('getting movie subscription service ' +req.params.id);
+  try {
+    const movieData = await Movie.findByPk(req.params.id);
+    const movie = movieData.get( {plain: true});
+    const subscriptionData = await movieData.getStreamingservices();
+    const subscriptions = await subscriptionData.map((sub) => sub.get({ plain: true }));
+
+    console.log("subscriptions");
+    console.log(subscriptions[0].name);
+    return;
+    
+  }catch (error) {
+    console.log(error)
+  }
+})
 
 router.get('/', withAuth, async (req, res) => {
   console.log(`in movie routes get / user id ${req.session.user_id}`);
@@ -36,6 +53,8 @@ router.get('/search', async (req, res) => {
 router.post('/', withAuth, async (req, res) => {
   //add to movies
   console.log(`in movie routes post / user id ${req.session.user_id} title ${req.body.title}`);
+  console.log('subscription links');
+  console.log(req.body.subServiceList);
   try {
     const movieData = await Movie.create({
       title: req.body.title,
