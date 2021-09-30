@@ -6,7 +6,7 @@ const path = require('path');
 
 router.get('/', async (req, res) => {
   if (req.session.logged_in) {
-    res.render('mymovies');
+    res.redirect('/api/mylist');
   } 
   
   res.render('login')
@@ -16,9 +16,10 @@ router.get('/', async (req, res) => {
 router.get('/signup', async (req, res) => {
   res.render('signup');
 });
+
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
-    res.redirect('mymovies');
+    res.redirect('/api/mylist');
     return;
   }
 

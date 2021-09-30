@@ -25,14 +25,23 @@
             <!--Navbar Items-->
             <div class="navbar-menu">
                 <div class="navbar-end">
-                    <a class="navbar-item" id="navbar-search">Search</a>
-                    <a class="navbar-item" id="navbar-my-account">My Account</a>
+                  <a class="navbar-item" id="navbar-search">Search</a>
+                  <a class="navbar-item" id="navbar-my-account">My Account</a>
+                  {{#if logged_in}}
+                    <a class="navbar-item" id="logout">Logout</a>
+                  {{/if}}
+
+
                 </div>
             </div>
     </nav>
-    
+
     {{{ body }}}
 
+    
+    {{#if logged_in}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
     <script src="/js/signinmodal.js"></script>
     <script src="/js/signup.js"></script>
     <script src="/js/navbar.js"></script>

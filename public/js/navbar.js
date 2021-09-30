@@ -12,7 +12,6 @@ const navbarHander = async (event) => {
     } else if (event.target.id == searchNavbar.id) {
       alert(`this functionality is not implemented yet`)
     } else {
-      alert('my account clicked');
       document.location.replace('/api/mylist');
     }
     console.log(event);
