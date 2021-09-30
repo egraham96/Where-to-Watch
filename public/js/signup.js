@@ -3,7 +3,7 @@ const homeSignUpButton = document.getElementById('signup');
 
 const homeSignUpButtonHandler = async (event) => {
     event.preventDefault();
-    document.location.replace('/signup.html');
+    document.location.replace('/signup');
 }
 
 homeSignUpButton.addEventListener('click', homeSignUpButtonHandler);

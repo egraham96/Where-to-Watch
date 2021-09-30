@@ -13,6 +13,9 @@ router.get('/', async (req, res) => {
   
 });
 
+router.get('/signup', async (req, res) => {
+  res.render('signup');
+});
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('mymovies');
