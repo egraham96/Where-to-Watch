@@ -7,15 +7,17 @@ router.get('/', async (req, res) => {
   
   try {
 
-    const user = await User.findByPk(req.session.user_id);
-    console.log(`user ${user}`);
-    const movieData = await user.getMovies();
+    const userData = await User.findByPk(req.session.user_id);
+    const user= userData.get( {plain: true});
+    console.log(`user ${userData}`);
+    const movieData = await userData.getMovies();
     
     const movies = movieData.map((movie) => movie.get({ plain: true }));
     console.log(movies);
     res.render('mymovies', { 
       logged_in: req.session.logged_in,
       movies: movies, 
+      user: user,
     });
     console.log('finished render')
 
