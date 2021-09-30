@@ -10,7 +10,7 @@ const navbarHander = async (event) => {
     if (event.target.id == homeNavbar.id) {
       document.location.replace('/api/mylist');
     } else if (event.target.id == searchNavbar.id) {
-      alert(`this functionality is not implemented yet`)
+      document.location.replace('/api/mylist/search')
     } else {
       document.location.replace('/api/mylist');
     }

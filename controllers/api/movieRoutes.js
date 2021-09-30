@@ -27,4 +27,10 @@ router.get('/', withAuth, async (req, res) => {
 
 });
 
+router.get('/search', async (req, res) => {
+  res.render('search',{
+    logged_in: req.session.logged_in,
+    });
+});
+
 module.exports = router;
