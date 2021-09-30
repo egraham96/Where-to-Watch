@@ -1,0 +1,18 @@
+<div class="section">
+    <!--Main-->
+    <div class="section">
+
+    <!--My List-->
+    <div class="my-5 has-text-weight-bold is-size-4">
+        {{movie.title}}: 
+    </div>
+
+      <div class="tile is-ancestor">
+{{#each subscriptions as |subscription|}}
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <p class="title">{{subscription.name}}</p>
+          </article>
+        </div>
+{{/each}}
+</div>

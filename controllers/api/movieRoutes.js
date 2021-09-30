@@ -12,6 +12,11 @@ router.get('/:id', async (req, res) => {
 
     console.log("subscriptions");
     console.log(subscriptions[0].name);
+    res.render('moviedetails', { 
+      logged_in: req.session.logged_in,
+      movie: movie, 
+      subscriptions: subscriptions,
+    });
     return;
     
   }catch (error) {
