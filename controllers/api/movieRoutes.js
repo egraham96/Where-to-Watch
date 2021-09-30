@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User, Movie, MovieList } = require('../../models');
 const withAuth = require('../../utils/auth')
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   console.log(`in movie routes get / user id ${req.session.user_id}`);
   
   try {
@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-  return "success";
+
 });
 
 module.exports = router;

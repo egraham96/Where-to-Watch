@@ -5,7 +5,21 @@ const path = require('path');
 //const { where } = require('sequelize/types');
 
 router.get('/', async (req, res) => {
-  return "success";
+  if (req.session.logged_in) {
+    res.render('mymovies');
+  } 
+  
+  res.render('login')
+  
+});
+
+router.get('/login', (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('mymovies');
+    return;
+  }
+
+  res.render('login');
 });
 
 
