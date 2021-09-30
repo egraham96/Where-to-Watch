@@ -8,9 +8,9 @@ const myAccountNavbar = document.getElementById('navbar-my-account');
 const navbarHander = async (event) => {
     event.preventDefault();
     if (event.target.id == homeNavbar.id) {
-      alert(`home clicked`);
+      document.location.replace('/api/mylist');
     } else if (event.target.id == searchNavbar.id) {
-      alert(`search clicked`)
+      alert(`this functionality is not implemented yet`)
     } else {
       alert('my account clicked');
       document.location.replace('/api/mylist');
