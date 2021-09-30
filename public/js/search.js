@@ -12,6 +12,24 @@ const buyheading = document.getElementById("buyheading");
 const buyerror = document.getElementById("buyerror");
 const addtomovies = document.getElementById("addtomovies");
 
+const addToMoviesHandler = async (event) => {
+    event.preventDefault();
+    alert('need to impleent this '+movieinput);
+        let title = movieinput;
+        const response = await fetch('/api/mylist', {
+          method: 'POST', 
+          body: JSON.stringify({ title }), 
+          headers: {'Content-Type': 'application/json'}
+        });
+        if (response.ok) {
+          document.location.replace('/api/mylist')
+        } else {
+          alert(`response not oke ${response.statusText}`)
+        }
+    
+};
+
+
 
 //Takes Movie Title submitted by user and returns Watchmode Api numerical ID for submitted movie
 function getId(query, type) {
@@ -38,6 +56,8 @@ function getId(query, type) {
                 /*You can test this by inputting a movie that does not exist*/
                 errormessage.textContent = "";
                 addtolist.textContent = "Add to Movies";
+                addtolist.addEventListener('click', addToMoviesHandler);
+
             } else throw Error('No movie found by that name');
         })
         .catch((err) => {
@@ -140,10 +160,12 @@ function renderbuydata(data) {
 }
 
 
+
+let movieinput
 //Grabs the Title submitted by the user and gives it to getId function. Do we want to allow people to search for TV shows as well? If so, that may be a bit more complicated.
 formEl.addEventListener('submit', function (event) {
     event.preventDefault();
-    let movieinput = document.getElementById('movieinput').value
+    movieinput = document.getElementById('movieinput').value
     let tvOrMovie = "movie";
     getId(movieinput, tvOrMovie)
 })

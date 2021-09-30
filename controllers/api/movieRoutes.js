@@ -33,4 +33,37 @@ router.get('/search', async (req, res) => {
     });
 });
 
+router.post('/', withAuth, async (req, res) => {
+  //add to movies
+  console.log(`in movie routes post / user id ${req.session.user_id} title ${req.body.title}`);
+  try {
+    const movieData = await Movie.create({
+      title: req.body.title,
+      number_of_ratings: 0,
+      rating_total: 0,
+      current_rating: 0
+    });
+
+    //sanitize movie data
+    const movie = movieData.get({ plain: true});
+
+    const movieListData = await MovieList.create({
+      movie_id: movie.id, 
+      user_id: req.session.user_id
+    });
+    req.session.save(() => {
+      req.session.user_id = movieListData.user_id;
+      req.session.logged_in = true;
+
+    });
+
+  } catch (err) {
+    res.status(400).json(err)
+  }
+  //add to movie list
+  res.render('mymovies',{
+    logged_in: req.session.logged_in,
+    });
+})
+
 module.exports = router;
