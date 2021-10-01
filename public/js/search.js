@@ -8,7 +8,6 @@ const addtomovies = document.getElementById("addtomovies");
 let imageURL = "";
 const addToMoviesHandler = async (event) => {
     event.preventDefault();
-    
         let title = movieinput;
         const response = await fetch('/api/mylist', {
           method: 'POST', 
@@ -24,7 +23,7 @@ const addToMoviesHandler = async (event) => {
 
 
 //Takes Movie Title submitted by user and returns Watchmode Api numerical ID for submitted movie
-function getId(query, type) {
+  function  getId(query, type) {
     fetch(
         `https://watchmode.p.rapidapi.com/search/?search_field=name&search_value=${query}&types=${type}`,
         {
@@ -37,7 +36,7 @@ function getId(query, type) {
         }
     )
         .then(response => response.json())
-        .then((data) => {
+        .then(async (data) => {
             if (data.title_results.length != 0) {
                 //console.log(data);
                 //console.log(data.title_results);
@@ -48,7 +47,8 @@ function getId(query, type) {
                 errormessage.textContent = "";
                 addtolist.textContent = "Add to Movies";
                 //you need to assign the image URL to this variable here
-                imageURL = getImageURL(data.title_results[0].imdb_id)//whatever link you want it tobe
+                imageURL = await getImageURL(data.title_results[0].imdb_id);
+                console.log (`calling addEventListener with image url ${imageURL}`)
                 addtolist.addEventListener('click', addToMoviesHandler);
 
             } else throw Error('No movie found by that name');
@@ -60,16 +60,17 @@ function getId(query, type) {
 
         });
 }
-function getImageURL (imdbID) {external_id=imdbID
+function getImageURL (imdbID) {
+    //external_id=imdbID
     apikey2="a5c09845f2af6ed970ae332ca8d551ec"
     fetch(
-        `https://api.themoviedb.org/3/find/${external_id}?api_key=${apikey2}&language=en-US&external_source=imdb_id`)
+        `https://api.themoviedb.org/3/find/${imdbID}?api_key=${apikey2}&language=en-US&external_source=imdb_id`)
         .then(response => response.json())
         .then((data) => {
             var path= data.movie_results[0].poster_path;
-            var imageURL= "https://image.tmdb.org/t/p/w200"+ path;
-            console.log(imageURL)
-            return imageURL;})
+            imageURL= "https://image.tmdb.org/t/p/w200"+ path;
+            return imageURL;
+        })
     .catch(err => {
         console.error(err);
         return null;
@@ -122,7 +123,6 @@ function rendersubdata(data) {
             suboptions.appendChild(list);
             subServiceList.push(value.web_url);
         });
-        console.log(subServiceList);
         subheading.textContent = ""
     } else {
         suberror.textContent = "No Subscription Services Links Available"
