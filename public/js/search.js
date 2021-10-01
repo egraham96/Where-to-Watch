@@ -26,7 +26,6 @@ const addToMoviesHandler = async (event) => {
         } else {
           alert(`response not oke ${response.statusText}`)
         }
-    
 };
 
 
@@ -95,7 +94,7 @@ function getStreaminginfo(id) {
 
 let subServiceList = [];
 function rendersubdata(data) {
-    var subscriptionoptions = data
+    data = data
         .filter(movie => {
             if (movie.region == "US" && movie.type == "sub" && movie.web_url != undefined) { return true; }
         })
@@ -103,8 +102,11 @@ function rendersubdata(data) {
     console.log(subscriptionoptions);
     /*Checks to make sure the Watchmode API has any SUBSCRIPTION streaming options available for the chosen movie in its database*/
     /*For example, Watchmode has the movie SpiceGirls in its database, has an ID for it, you can buy or rent movie, but no subscription streaming links available*/
-    if (subscriptionoptions.length != 0) {
-        subscriptionoptions.forEach(value => {
+
+    if (data.length != 0) {
+        suboptions.innerHTML = '';
+        subServiceList = [];
+        data.forEach(value => {
             var list = document.createElement("ul");
             var link = document.createElement("li");
             link.textContent = value.web_url
@@ -165,9 +167,11 @@ function renderbuydata(data) {
 
 
 
+let subscriptionoptions = [];    
 let movieinput
 //Grabs the Title submitted by the user and gives it to getId function. Do we want to allow people to search for TV shows as well? If so, that may be a bit more complicated.
 formEl.addEventListener('submit', function (event) {
+    subscriptionoptions = [];
     event.preventDefault();
     movieinput = document.getElementById('movieinput').value
     let tvOrMovie = "movie";
