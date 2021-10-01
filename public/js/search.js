@@ -26,7 +26,6 @@ const addToMoviesHandler = async (event) => {
         } else {
           alert(`response not oke ${response.statusText}`)
         }
-    
 };
 
 
@@ -95,7 +94,8 @@ function getStreaminginfo(id) {
 
 let subServiceList = [];
 function rendersubdata(data) {
-    var subscriptionoptions = data
+    let subscriptionoptions = [];
+    subscriptionoptions = data
         .filter(movie => {
             if (movie.region == "US" && movie.type == "sub" && movie.web_url != undefined) { return true; }
         })
@@ -104,6 +104,7 @@ function rendersubdata(data) {
     /*Checks to make sure the Watchmode API has any SUBSCRIPTION streaming options available for the chosen movie in its database*/
     /*For example, Watchmode has the movie SpiceGirls in its database, has an ID for it, you can buy or rent movie, but no subscription streaming links available*/
     if (subscriptionoptions.length != 0) {
+        suboptions.innerHTML = '';
         subscriptionoptions.forEach(value => {
             var list = document.createElement("ul");
             var link = document.createElement("li");
