@@ -15,7 +15,58 @@
             </div>
 
     <!--Popular Movies-->
-    <div class="my-4">(PopularMoviesAPI)</div>
+        <h4 id="trendingheader">5 Movies Trending in the US this Week:
+        <style>#trendingheader{text-align:Center;
+        font-size:20px;
+        text-decoration:underline}</style>
+    </h4>
+
+    <!--Popular Movies-->
+    <div id="popular" class="my-4">
+        <style>#popular{display:flex;
+        flex-wrap:wrap;
+        flex-direction:row;
+        justify-content: center;
+        font-size:18px;}
+        .posterpic{margin:7px;}</style>
+        <script type = "text/javascript">
+        const apiKey= 'a5c09845f2af6ed970ae332ca8d551ec';
+        const popular=document.getElementById("popular")
+
+        popularmovies();
+        function popularmovies(){
+            fetch(`https://api.themoviedb.org/3/trending/all/week?api_key=${apiKey}&language=en-US&page=1`)
+            .then(response => response.json())
+            .then((data) => {console.log(data.results);
+            printdata(data.results)})
+        .catch(err => {
+            console.error(err);
+        });}
+        
+        function printdata(data){
+            var trendingmovielist=data
+            .filter(movie => {
+                if (movie.title != undefined) { return true; }
+            })
+            if (trendingmovielist.length != 0) {
+                trendingmovielist.length=5;
+          trendingmovielist.forEach(value => {
+              var div=document.createElement("div");
+              div.setAttribute("class", "posterpic");
+                var listEl=document.createElement("ul");
+                var paraEl=document.createElement("p")
+                paraEl.textContent="Average rating: " + value.vote_average + "/10"
+                var pic = document.createElement("img");
+                var path= value.poster_path;
+                var imagelink= "https://image.tmdb.org/t/p/w200"+ path;
+                pic.src = imagelink
+                listEl.appendChild(div);
+                div.appendChild(pic);
+                div.appendChild(paraEl)
+                popular.appendChild(listEl);
+            });}else {popular.textContent="No Popular Movies available"}
+        }</script>
+    </div>
 
     <!--Sign In Modal-->
     <div class="modal">
