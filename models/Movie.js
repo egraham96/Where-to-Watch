@@ -30,6 +30,11 @@ Movie.init(
       allowNull: true,
       defaultValue: null
     },
+    image: {
+      type: DataTypes.STRING, 
+      allow: true, 
+      defaultValue: null
+    }
   },
   {
     sequelize,

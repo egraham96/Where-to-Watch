@@ -56,12 +56,14 @@ router.post('/', withAuth, async (req, res) => {
   console.log(`in movie routes post / user id ${req.session.user_id} title ${req.body.title}`);
   console.log('subscription links');
   console.log(req.body.subServiceList);
+  console.log(req.body.imageURL);
   try {
     const movieData = await Movie.create({
       title: req.body.title,
       number_of_ratings: 0,
       rating_total: 0,
-      current_rating: 0
+      current_rating: 0,
+      image: req.body.imageURL
     });
 
     //sanitize movie data
