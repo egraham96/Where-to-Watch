@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Good Will Hunting", 
+    "number_of_ratings": 0,
+    "rating_total": 0,
+    "current_rating": 0
+  },
+  {
+    "title":"The Matrix",
+    "number_of_ratings":1, 
+    "rating_total":5,
+    "current_rating": 5
+  },
+  {
+    "title":"Lord of the Rings",
+    "number_of_ratings":5, 
+    "rating_total":20,
+    "current_rating": 4
+  },
+  {
+    "title":"Iron Man",
+    "number_of_ratings":1, 
+    "rating_total":5,
+    "current_rating": 5
+  }
+]

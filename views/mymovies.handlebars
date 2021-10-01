@@ -1,0 +1,28 @@
+<div class="section">
+        <div class="columns is-size-5">Hello&nbsp;<div>{{user.user_name}}</div>!
+    </div>
+
+    <!--Main-->
+    <div class="section">
+
+    <!--My List-->
+    <div class="my-5 has-text-weight-bold is-size-4">
+        My Movies: 
+    </div>
+
+      <div class="tile is-ancestor">
+{{#each movies as |movie|}}
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <p class="title">{{movie.title}}</p>
+            <a href="/api/mylist/{{movie.id}}">Details</a>
+          
+
+            <a>
+              <figure class="image is-4by3">
+                <img src="../Assets/JPpic.jpeg">
+            </a>
+          </article>
+        </div>
+{{/each}}
+</div>

@@ -1,3 +1,36 @@
+## Setup 
+
+### To Start 
+
+```
+npm install
+```
+
+### configure your db connection
+1. copy the contents of .env.EXAMPLE into a new file .env
+2. fill in the user name and password for your db
+### Set up the db
+
+To set up the db schema
+```
+cd db
+mysql
+source schema.sql
+quit
+```
+
+### Seed the db (optional)
+To seed the db 
+```
+npm run seed
+```
+
+### To start the server 
+```
+npm start
+```
+
+
 ## User Story
 
 ```md

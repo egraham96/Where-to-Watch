@@ -12,6 +12,24 @@ const buyheading = document.getElementById("buyheading");
 const buyerror = document.getElementById("buyerror");
 const addtomovies = document.getElementById("addtomovies");
 
+const addToMoviesHandler = async (event) => {
+    event.preventDefault();
+    
+        let title = movieinput;
+        const response = await fetch('/api/mylist', {
+          method: 'POST', 
+          body: JSON.stringify({ title , subServiceList }), 
+          headers: {'Content-Type': 'application/json'}
+        });
+        if (response.ok) {
+          document.location.replace('/api/mylist')
+        } else {
+          alert(`response not oke ${response.statusText}`)
+        }
+    
+};
+
+
 
 //Takes Movie Title submitted by user and returns Watchmode Api numerical ID for submitted movie
 function getId(query, type) {
@@ -38,6 +56,8 @@ function getId(query, type) {
                 /*You can test this by inputting a movie that does not exist*/
                 errormessage.textContent = "";
                 addtolist.textContent = "Add to Movies";
+                addtolist.addEventListener('click', addToMoviesHandler);
+
             } else throw Error('No movie found by that name');
         })
         .catch((err) => {
@@ -73,11 +93,13 @@ function getStreaminginfo(id) {
         });
 }
 
+let subServiceList = [];
 function rendersubdata(data) {
     var subscriptionoptions = data
         .filter(movie => {
             if (movie.region == "US" && movie.type == "sub" && movie.web_url != undefined) { return true; }
         })
+    console.log('subscription array')
     console.log(subscriptionoptions);
     /*Checks to make sure the Watchmode API has any SUBSCRIPTION streaming options available for the chosen movie in its database*/
     /*For example, Watchmode has the movie SpiceGirls in its database, has an ID for it, you can buy or rent movie, but no subscription streaming links available*/
@@ -88,7 +110,9 @@ function rendersubdata(data) {
             link.textContent = value.web_url
             list.appendChild(link);
             suboptions.appendChild(list);
+            subServiceList.push(value.web_url);
         });
+        console.log(subServiceList);
         subheading.textContent = ""
     } else {
         suberror.textContent = "No Subscription Services Links Available"
@@ -140,10 +164,12 @@ function renderbuydata(data) {
 }
 
 
+
+let movieinput
 //Grabs the Title submitted by the user and gives it to getId function. Do we want to allow people to search for TV shows as well? If so, that may be a bit more complicated.
 formEl.addEventListener('submit', function (event) {
     event.preventDefault();
-    let movieinput = document.getElementById('movieinput').value
+    movieinput = document.getElementById('movieinput').value
     let tvOrMovie = "movie";
     getId(movieinput, tvOrMovie)
 })

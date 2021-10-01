@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <title>WhereToMovie Homepage</title>
+</head>
+<body>
+
+    <!--Navbar-->
+    <nav class="navbar has-shadow is-white">
+        <!--Logo-->
+        <div class="navbar-brand">
+            <a class="navbar-item">
+                <img src="/public/assets/logo.png" alt="Site Logo" style="max-height: 70px" class="py-3 px-2">
+            </a>
+            <a class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+        </div>
+
+            <div class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item">Search</a>
+                    <a class="navbar-item">My Account</a>
+                </div>
+            </div>
+    </nav>
+
+    <!--Search Button-->
+    <div class="section">
+        <div class="mb-4 has-text-weight-bold is-size-4">Search for a movie:</div>
+    <!--Search-->
+
+      <form id="form">
+        <input id="movieinput" type="text" autofocus="true" placeholder="Jurassic Park" class="input" style="width: 50%" />
+        <button id="submitbutton" type="submit" class="button">Search</button>
+      </form>
+
+    <a id="addtolist" class="my-3"></a>
+    <div id="errormessage" class="my-5"></div>
+
+    <!--Results-->
+    <div class="mb-4 has-text-weight-bold is-size-4">Subscription Streaming:</div>
+    <div id="suboptions"><h4 id="subheading"></h4><h4 id="suberror"></h4></div>
+
+    <div class="my-4 has-text-weight-bold is-size-4">Rental Streaming:</div>
+    <div id="rentoptions"><h4 id="rentheading"></h4><h4 id="renterror"></h4></div>
+
+    <div class="my-4 has-text-weight-bold is-size-4">Purchase Streaming:</div>
+    <div id="buyoptions"><h4 id="buyheading"></h4><h4 id="buyerror"></h4></div>
+
+<script src=../apitest.js></script>
+</body>
+</html>
+
+    <!--Old Search Button
+        <div class="mb-4 has-text-weight-bold is-size-4">Search for a movie:</div>
+    <div class="field has-addons">
+        <div class="control" style="width: 50%">
+          <input class="input" type="text" placeholder="Jurassic Park">
+        </div>
+        <div class="control">
+          <a class="button is-info">
+            Search
+          </a>
+        </div>
+      </div>
+    -->

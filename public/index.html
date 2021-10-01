@@ -42,7 +42,9 @@
                 </div>
                 
                 <div class="my-2 mx-6">
+
                     <button class="button my-2 px-4" onclick="document.location.href='/public/signup.html'" id="signup">Sign Up</button>
+
                 </div>
                 <br><br><br><br>
             </div>
@@ -127,6 +129,35 @@
     </div>
 
 
-    <script src="/public/js/signinmodal.js"></script>
+    <!--Sign In Modal-->
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content has-background-white py-5 px-5">
+            <h3 class="title mb-6">Sign In</h3>
+            <form>
+                <div class="field">
+                    <label class="label">Username</label>
+                    <div class="control">
+                        <input type="text" class="input" placeholder="Username" id="modal-user-name">
+                    </div>
+                    <div class="field">
+                        <label class="label pt-2">Password</label>
+                        <div class="control">
+                            <input type="password" class="input" placeholder="Password" id="modal-password">
+                        </div>
+                </div>
+                <div class="mt-6 has-text-centered">
+                    <button class="button is-primary" id="modal-sign-in-button">Sign In!</button>
+                </div>
+                <div class="mt-4 has-text-centered">
+                    Don't have an account? <a href="/public/signup.html">Sign up here!</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/signinmodal.js"></script>
+    <script src="js/signup.js"></script>
+
 </body>
 </html>
