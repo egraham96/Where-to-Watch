@@ -4,12 +4,6 @@ const errormessage = document.getElementById("errormessage");
 const suboptions = document.getElementById("suboptions");
 const subheading = document.getElementById("subheading");
 const suberror = document.getElementById("suberror");
-const rentoptions = document.getElementById("rentoptions");
-const rentheading = document.getElementById("rentheading");
-const renterror = document.getElementById("renterror");
-const buyoptions = document.getElementById("buyoptions");
-const buyheading = document.getElementById("buyheading");
-const buyerror = document.getElementById("buyerror");
 const addtomovies = document.getElementById("addtomovies");
 let imageURL = "";
 const addToMoviesHandler = async (event) => {
@@ -27,7 +21,6 @@ const addToMoviesHandler = async (event) => {
           alert(`response not oke ${response.statusText}`)
         }
 };
-
 
 
 //Takes Movie Title submitted by user and returns Watchmode Api numerical ID for submitted movie
@@ -49,14 +42,13 @@ function getId(query, type) {
                 //console.log(data);
                 //console.log(data.title_results);
                 let id = data.title_results[0].id;
-                console.log(id);
                 getStreaminginfo(id)
                 /*If Watchmode does not have the movie title (and thus its ID) in its database, that means it does not have any streaming options. This throws an error telling user to pick a different movie*/
                 /*You can test this by inputting a movie that does not exist*/
                 errormessage.textContent = "";
                 addtolist.textContent = "Add to Movies";
                 //you need to assign the image URL to this variable here
-                imageURL = getImageURL(id)//whatever link you want it tobe
+                imageURL = getImageURL(data.title_results[0].imdb_id)//whatever link you want it tobe
                 addtolist.addEventListener('click', addToMoviesHandler);
 
             } else throw Error('No movie found by that name');
@@ -68,11 +60,21 @@ function getId(query, type) {
 
         });
 }
-function getImageURL (id) {
-    //make the call to get the image url
-    //return the image url
-    return null;
-}
+function getImageURL (imdbID) {external_id=imdbID
+    apikey2="a5c09845f2af6ed970ae332ca8d551ec"
+    fetch(
+        `https://api.themoviedb.org/3/find/${external_id}?api_key=${apikey2}&language=en-US&external_source=imdb_id`)
+        .then(response => response.json())
+        .then((data) => {
+            var path= data.movie_results[0].poster_path;
+            var imageURL= "https://image.tmdb.org/t/p/w200"+ path;
+            console.log(imageURL)
+            return imageURL;})
+    .catch(err => {
+        console.error(err);
+        return null;
+    });}
+
 function getStreaminginfo(id) {
     fetch("https://watchmode.p.rapidapi.com/title/" + id + "/sources/", {
         "method": "GET",
@@ -170,7 +172,6 @@ function renderbuydata(data) {
         buyerror.textContent = "No Movie Purchase Options Available"
     }
 }
-
 
 
 let subscriptionoptions = [];    
