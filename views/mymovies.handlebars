@@ -16,12 +16,10 @@
           <article class="tile is-child box">
             <p class="title">{{movie.title}}</p>
             <a href="/api/mylist/{{movie.id}}">Details</a>
-          
-
-            <a>
+           
               <figure class="image is-4by3">
-                <img src="../Assets/JPpic.jpeg">
-            </a>
+                <img src="{{movie.image}}">
+           
           </article>
         </div>
 {{/each}}

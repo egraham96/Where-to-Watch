@@ -11,14 +11,14 @@ const buyoptions = document.getElementById("buyoptions");
 const buyheading = document.getElementById("buyheading");
 const buyerror = document.getElementById("buyerror");
 const addtomovies = document.getElementById("addtomovies");
-
+let imageURL = "";
 const addToMoviesHandler = async (event) => {
     event.preventDefault();
     
         let title = movieinput;
         const response = await fetch('/api/mylist', {
           method: 'POST', 
-          body: JSON.stringify({ title , subServiceList }), 
+          body: JSON.stringify({ title , subServiceList, imageURL }), 
           headers: {'Content-Type': 'application/json'}
         });
         if (response.ok) {
@@ -55,6 +55,8 @@ function getId(query, type) {
                 /*You can test this by inputting a movie that does not exist*/
                 errormessage.textContent = "";
                 addtolist.textContent = "Add to Movies";
+                //you need to assign the image URL to this variable here
+                imageURL = getImageURL(id)//whatever link you want it tobe
                 addtolist.addEventListener('click', addToMoviesHandler);
 
             } else throw Error('No movie found by that name');
@@ -66,7 +68,11 @@ function getId(query, type) {
 
         });
 }
-
+function getImageURL (id) {
+    //make the call to get the image url
+    //return the image url
+    return null;
+}
 function getStreaminginfo(id) {
     fetch("https://watchmode.p.rapidapi.com/title/" + id + "/sources/", {
         "method": "GET",
