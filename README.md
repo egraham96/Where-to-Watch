@@ -1,44 +1,33 @@
-## Setup 
+# Where to Watch
+Project #2 UW Fullstack Coding Bootcamp
 
-### To Start 
+## Description
+For the second group project of the course, we were required to use everything we've learned over the past 3 months to create a real-world full-stack application that we'd be able to showcase to potential employers. Our group decided to create Where to Watch, an application that allows users to input any movie and access links where the movie can be streamed online. Additionally, if users create a Where to Watch account, they can add and remove movies to their very own "Watchlist". 
 
-```
-npm install
-```
+### Installation Instructions 
+Download the repository from Github. Install the dependencies (using npm -i or node install). Then, follow the steps below to configure your db connection:
 
-### configure your db connection
-1. copy the contents of .env.EXAMPLE into a new file .env
-2. fill in the user name and password for your db
-### Set up the db
+1. Copy the contents of .env.EXAMPLE into a new file .env
+2. Fill in the user name and password for your db
 
-To set up the db schema
-```
-cd db
-mysql
-source schema.sql
-quit
-```
+Next, follow these steps to set up your database:
+1. Navigate to the DB in your terminal ("cd db")
+2. Type "mysql source schema.sql" into your terminal
+3. Type "quit" into your terminal
 
-### Seed the db (optional)
-To seed the db 
-```
-npm run seed
-```
+Then, follow these steps to seed the database (optional):
+1. Enter "npm run seed" in your terminal
 
-### To start the server 
-```
-npm start
-```
+Finally, to start the server enter "npm start" into your terminal.
 
+You're all set!
 
 ## User Story
-
 ```md
 AS a user who likes to watch movies using subscription services
 I WANT a website 
 SO THAT I can track movies on my watch list and where they are streaming
 ```
-
 ## Acceptance Criteria
 
 ```md
@@ -77,3 +66,49 @@ WHEN I click on the logout option in the navigation
 THEN I am signed out of the site
 WHEN I am idle on the site for more than a set time
 THEN I am able to view the page but I am prompted to log in again before I can add, update, or delete from my movie watchlist
+
+## Built With:
+JavaScript
+jQuery
+Node.js
+MySQL2
+MySQL Workbench
+Sequelize
+Express.js
+express-session
+Passport
+Passport-Local
+bcryps.js
+dotenv
+Handlebars
+file-system
+Bulma UI
+
+## Deployed Links:
+* [See Live Site](https://wheretomovie.herokuapp.com/)
+* [Link to GitHub Repo](https://github.com/egraham96/Where-to-Watch)
+
+## Preview of Working Site:
+![Screenshot of Deployed Application](Screenshot.PNG)
+
+
+## How to Contribute:
+If you'd like to contribute to this project please send an email to eeg4@uw.edu.
+
+## How to Test the Application:
+Please see installation instructions above. 
+
+## License:
+
+![](https://img.shields.io/badge/License:%20MIT-pink`)
+
+Copyright <2021><Emma Graham, Ray Ashir, Stephanie Heins>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
