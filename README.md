@@ -66,6 +66,7 @@ WHEN I click on the logout option in the navigation
 THEN I am signed out of the site
 WHEN I am idle on the site for more than a set time
 THEN I am able to view the page but I am prompted to log in again before I can add, update, or delete from my movie watchlist
+```
 
 ## Built With:
 JavaScript
@@ -89,7 +90,7 @@ Bulma UI
 * [Link to GitHub Repo](https://github.com/egraham96/Where-to-Watch)
 
 ## Preview of Working Site:
-![Screenshot of Deployed Application](Screenshot.PNG)
+![Screenshot of Deployed Application](./public/assets/screenshot.png)
 
 
 ## How to Contribute:
