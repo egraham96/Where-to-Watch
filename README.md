@@ -29,7 +29,6 @@ I WANT a website
 SO THAT I can track movies on my watch list and where they are streaming
 ```
 ## Acceptance Criteria
-
 ```md
 GIVEN a CMS-style blog site
 WHEN I visit the site for the first time
@@ -66,6 +65,7 @@ WHEN I click on the logout option in the navigation
 THEN I am signed out of the site
 WHEN I am idle on the site for more than a set time
 THEN I am able to view the page but I am prompted to log in again before I can add, update, or delete from my movie watchlist
+```md
 
 ## Built With:
 JavaScript
